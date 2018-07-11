@@ -1,0 +1,76 @@
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-family: monospace;
+}
+
+ul {
+    background: darkorange;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+li {
+    color: #fff;
+    background: darkorange;
+    display: block;
+    float: left;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.3s; /* for hover color switching */
+}
+
+li a {
+    color: #fff;
+    display: inline-block;
+    padding: 0.5rem;
+    white-space: nowrap;
+    width: 100%;
+}
+
+li:hover,
+li:focus-within {
+    background: red;
+}
+
+li:focus-within a {
+    outline: none;
+}
+
+ul li ul {
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.1s ease;
+    left: 100%;
+    top: 0;
+}
+
+ul.bookmarks-root > li > ul {
+    left: 0;
+    top: initial;
+    min-width: 100%; /* so that first dropdown menu will be at least so wide as parent */
+}
+
+ul li:focus-within > ul,
+ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+ul:not(.bookmarks-root) > li > a[aria-haspopup=true]::after {
+    content: " →";
+}
+
+ul.bookmarks-root > li > a[aria-haspopup=true]::before {
+    content: "📁 ";
+}
